@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <TITLE> Meu Slide</TITLE>
+        <meta Author="Pablo Wellerson">
+        <meta Date="28/12/2018">
+        <style>
+            /* Estilização da div*/
+            #slide{
+                border: 1px solid black;
+                width: 1000px;
+                height: 300px;
+                transition: 1s;
+            }
+            span{
+                color: white;
+                font-size: 70px;
+                cursor:pointer;
+                position: relative;
+                top: 220px;
+                left: 50%;
+                transition: 1s;
+                
+            }
+            
+            #dvbarra{
+                height: 5px;
+                position:relative;
+                top: 68%;
+                background-color: red;
+                transition: 1s;
+                
+            }
+        
+        </style>
+        <script>
+            //var img=[]; //array que percorre as imagens
+            var cont; // variável contador
+            var obj; // variável da div id=slide
+            var obj1; // variável das cores dos botões
+            var obj2; // variável das cores dos botões
+            var obj3; // variável das cores dos botões
+            var cor;
+            cont=0;
+            
+            
+            //Função que incrementa a variável cont para a mudança das imagens.
+            function inter(){
+                obj1=document.getElementById("bol1");
+                obj2=document.getElementById("bol2");
+                obj3=document.getElementById("bol3");
+                barra=document.getElementById("dvbarra");
+                if(cont == 3){
+                    cont=0;
+                }
+                ++cont;
+                trocaImg(cont);
+                CorBotoes(cont);
+            }
+            
+            //função que faz a mudança das imagens.
+            function trocaImg(cont){
+                obj=document.getElementById("slide");
+                obj.style.backgroundImage="url(_img/img"+cont+".jpg)"
+                // as imagens estão na pasta "_img/", renomeadas para img1,img2,img3.
+                //o cont faz a função de pular as imagens, recebendo incremendo da função inter;
+            }
+        
+            
+            // função que altera cor dos botões.
+            function CorBotoes(cont){
+//                obj1=document.getElementById("bol1");
+//                obj2=document.getElementById("bol2");
+//                obj3=document.getElementById("bol3");
+                if(cont == 1){
+                    obj1.style.color="red";
+                    obj2.style.color="white";
+                    obj3.style.color="white";
+                    barra.style.width="33%";
+                }else if(cont == 2){
+                    obj2.style.color="red";
+                    obj1.style.color="white";
+                    obj3.style.color="white";
+                    barra.style.width="66%"
+                }else if(cont == 3){
+                    obj3.style.color="red";
+                    obj1.style.color="white";
+                    obj2.style.color="white";
+                    barra.style.width="100%";
+                }
+            }
+            
+            function ClkBotao1(){
+                cont = 1;
+                trocaImg(cont);
+                CorBotoes(cont);
+            }
+            
+            function ClkBotao2(){
+                cont = 2;
+                trocaImg(cont);
+                CorBotoes(cont);
+            }
+            
+            function ClkBotao3(){
+                cont = 3;
+                trocaImg(cont);
+                CorBotoes(cont);
+            }
+            
+            setInterval(inter,3000);
+            window.addEventListener("load",inter,CorBotoes);
+            
+            
+        </script>
+    </head>
+    <body>
+        <div id="slide">
+            <span id="bol1" onclick="ClkBotao1()">•</span>
+            <span id="bol2" onclick="ClkBotao2()">•</span>
+            <span id="bol3" onclick="ClkBotao3()">•</span>
+            <div id="dvbarra"></div>
+        </div>
+        <script>
+           
+        </script>
+    </body>
+</html>
